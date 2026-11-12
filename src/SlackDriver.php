@@ -442,7 +442,7 @@ class SlackDriver extends HttpDriver implements VerifiesService
         ]);
         $botUserIdPayload = new ParameterBag((array) json_decode($botUserIdRequest->getContent(), true));
 
-        if ($botUserIdPayload->get('user_id')) {
+        if ($botUserIdPayload->get('ok') && $botUserIdPayload->get('user_id')) {
             $this->botUserID = $botUserIdPayload->get('user_id');
             $this->getBotId();
         }
@@ -459,8 +459,8 @@ class SlackDriver extends HttpDriver implements VerifiesService
         ]);
         $botUserPayload = (array) json_decode($botUserRequest->getContent(), true);
 
-        if ($botUserPayload['user']['is_bot']) {
-            $this->botID = $botUserPayload['user']['profile']['bot_id'];
+        if (($botUserPayload['ok'] ?? false) && ($botUserPayload['user']['is_bot'] ?? false)) {
+            $this->botID = $botUserPayload['user']['profile']['bot_id'] ?? null;
         }
     }
 
