@@ -14,11 +14,11 @@
     }],
     "require": {
         "php": ">=7.0",
-        "botman/botman": "~2.1",
-        "mpociot/slack-client": "~1.0"
+        "botman/botman": "~2.1"
     },
     "require-dev": {
         "botman/studio-addons": "~1.0",
+        "mpociot/slack-client": "~1.0",
         "phpunit/phpunit": "~5.0",
         "illuminate/console": "~5.0",
         "illuminate/support": "~5.0",
